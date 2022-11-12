@@ -94,7 +94,7 @@ body {
     text-align: center;
 }
 
-ul {
+.notes {
     display: block;
     width: 600px;
 }
