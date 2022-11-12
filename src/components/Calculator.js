@@ -10,12 +10,12 @@ const mj = function (tex) {
 }
 
 const calculate = (expression) => {
-    return math.format(math.evaluate(expression))
+    return math.format(math.evaluate(expression), {notation: 'fixed'})
 }
 
 // remove anything that is not 0-9 ^ * / ( ) + -
 const cleanExpression = (e) => {
-    return e.replace(/[^0-9\^\*\+\-\./()]/gi, '')
+    return e.replace(/[^0-9^*+-./()]/gi, '')
 }
 
 const Calculator = () => {
@@ -63,7 +63,7 @@ const Calculator = () => {
                 onChange={handleOnExpressionChange}/>
             <label htmlFor="expression" className="formatted-display" ref={formatRef}></label>
             <div className="keypad">
-                <button className="button dark" onClick={handleOnClear}>AC</button>
+                <button className="button dark small-font" onClick={handleOnClear}>AC</button>
                 <button className="button dark" onClick={() => handleOnButtonClick('(')}>(</button>
                 <button className="button dark" onClick={() => handleOnButtonClick(')')}>)</button>
                 <button className="button bright" onClick={() => handleOnButtonClick('/')}>/</button>

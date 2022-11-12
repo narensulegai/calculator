@@ -20,8 +20,7 @@ body {
 .keypad {
     margin-top: 1rem;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    justify-content: space-between;
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .button {
@@ -30,6 +29,8 @@ body {
     text-align: center;
     font-size: 1.5rem;
     border-radius: 5px;
+    color: black;
+    cursor: pointer;
 }
 
 .dark {
@@ -54,6 +55,7 @@ body {
 
 .small-font {
     font-size: 0.8rem;
+    font-weight: bolder;
 }
 
 .display {
