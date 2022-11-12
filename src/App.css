@@ -9,9 +9,8 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
-
 .calculator {
-    margin: 50px auto auto auto;
+    margin: auto;
     background: #4B4453;
     width: 300px;
     padding: 1rem;
@@ -57,7 +56,7 @@ body {
     font-size: 0.8rem;
 }
 
-.display textarea {
+.display {
     width: 100%;
     height: 100px;
     background: #FEFEDF;
@@ -70,6 +69,7 @@ body {
 }
 
 .formatted-display {
+    display: block;
     margin-top: 0.5rem;
     height: 40px;
     background: #D5CABD;
@@ -87,4 +87,18 @@ body {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+.center {
+    margin: auto;
+    text-align: center;
+}
+
+ul {
+    display: block;
+    width: 600px;
+}
+
+.mt-small {
+    margin-top: 1rem;
 }

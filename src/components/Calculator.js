@@ -55,12 +55,13 @@ const Calculator = () => {
 
     return (
         <div className="calculator">
-            <div className="display">
-                <textarea type="text"
-                          value={expression}
-                          onChange={handleOnExpressionChange}/>
-            </div>
-            <div className="formatted-display" ref={formatRef}></div>
+            <textarea
+                className="display"
+                type="text"
+                name="expression"
+                value={expression}
+                onChange={handleOnExpressionChange}/>
+            <label htmlFor="expression" className="formatted-display" ref={formatRef}></label>
             <div className="keypad">
                 <button className="button dark" onClick={handleOnClear}>AC</button>
                 <button className="button dark" onClick={() => handleOnButtonClick('(')}>(</button>
