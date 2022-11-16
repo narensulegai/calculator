@@ -5,16 +5,16 @@ const math = create(all)
 
 math.config({number: 'BigNumber', epsilon: 1e-60})
 
-const mj = function (tex) {
+const mathFormulaToSvgText =  (tex) => {
     return window.MathJax.tex2svg(tex, {em: 16, ex: 6, display: false});
 }
 
-const calculate = (expression) => {
+export const calculate = (expression) => {
     return math.format(math.evaluate(expression), {notation: 'fixed'})
 }
 
 // remove anything that is not 0-9 ^ * / ( ) + -
-const cleanExpression = (e) => {
+export const cleanExpression = (e) => {
     return e.replace(/[^0-9^*+-./()]/gi, '')
 }
 
@@ -44,7 +44,7 @@ const Calculator = () => {
         if (expression !== '') {
             try {
                 const parsed = math.parse(expression)
-                formatRef.current.append(mj(parsed.toTex({parenthesis: 'keep'})))
+                formatRef.current.append(mathFormulaToSvgText(parsed.toTex({parenthesis: 'keep'})))
                 setIsValid(true)
             } catch (e) {
                 formatRef.current.textContent = e.message
@@ -61,7 +61,7 @@ const Calculator = () => {
                 name="expression"
                 value={expression}
                 onChange={handleOnExpressionChange}/>
-            <label htmlFor="expression" className="formatted-display" ref={formatRef}></label>
+            <label htmlFor="expression" className="formatted-display" ref={formatRef}/>
             <div className="keypad">
                 <button className="button dark small-font" onClick={handleOnClear}>AC</button>
                 <button className="button dark" onClick={() => handleOnButtonClick('(')}>(</button>
