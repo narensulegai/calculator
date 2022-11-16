@@ -5,7 +5,7 @@ const math = create(all)
 
 math.config({number: 'BigNumber', epsilon: 1e-60})
 
-const mathFormulaToSvgText =  (tex) => {
+const mathFormulaToSvgText = (tex) => {
     return window.MathJax.tex2svg(tex, {em: 16, ex: 6, display: false});
 }
 
@@ -53,6 +53,10 @@ const Calculator = () => {
         }
     }, [expression])
 
+    const buttonClickHandler = (char) => {
+        return () => handleOnButtonClick(char)
+    }
+
     return (
         <div className="calculator">
             <textarea
@@ -64,24 +68,24 @@ const Calculator = () => {
             <label htmlFor="expression" className="formatted-display" ref={formatRef}/>
             <div className="keypad">
                 <button className="button dark small-font" onClick={handleOnClear}>AC</button>
-                <button className="button dark" onClick={() => handleOnButtonClick('(')}>(</button>
-                <button className="button dark" onClick={() => handleOnButtonClick(')')}>)</button>
-                <button className="button bright" onClick={() => handleOnButtonClick('/')}>/</button>
-                <button className="button" onClick={() => handleOnButtonClick(7)}>7</button>
-                <button className="button" onClick={() => handleOnButtonClick(8)}>8</button>
-                <button className="button" onClick={() => handleOnButtonClick(9)}>9</button>
-                <button className="button bright" onClick={() => handleOnButtonClick('*')}>X</button>
-                <button className="button" onClick={() => handleOnButtonClick(4)}>4</button>
-                <button className="button" onClick={() => handleOnButtonClick(5)}>5</button>
-                <button className="button" onClick={() => handleOnButtonClick(6)}>6</button>
-                <button className="button bright" onClick={() => handleOnButtonClick('-')}>-</button>
-                <button className="button" onClick={() => handleOnButtonClick(1)}>1</button>
-                <button className="button" onClick={() => handleOnButtonClick(2)}>2</button>
-                <button className="button" onClick={() => handleOnButtonClick(3)}>3</button>
-                <button className="button bright" onClick={() => handleOnButtonClick('+')}>+</button>
-                <button className="button" onClick={() => handleOnButtonClick(0)}>0</button>
-                <button className="button bright small-font" onClick={() => handleOnButtonClick('.')}>.</button>
-                <button className="button bright small-font" onClick={() => handleOnButtonClick('^')}>EXP</button>
+                <button className="button dark" onClick={buttonClickHandler('(')}>(</button>
+                <button className="button dark" onClick={buttonClickHandler(')')}>)</button>
+                <button className="button bright" onClick={buttonClickHandler('/')}>/</button>
+                <button className="button" onClick={buttonClickHandler('7')}>7</button>
+                <button className="button" onClick={buttonClickHandler('8')}>8</button>
+                <button className="button" onClick={buttonClickHandler('9')}>9</button>
+                <button className="button bright" onClick={buttonClickHandler('*')}>X</button>
+                <button className="button" onClick={buttonClickHandler('4')}>4</button>
+                <button className="button" onClick={buttonClickHandler('5')}>5</button>
+                <button className="button" onClick={buttonClickHandler('6')}>6</button>
+                <button className="button bright" onClick={buttonClickHandler('-')}>-</button>
+                <button className="button" onClick={buttonClickHandler('1')}>1</button>
+                <button className="button" onClick={buttonClickHandler('2')}>2</button>
+                <button className="button" onClick={buttonClickHandler('3')}>3</button>
+                <button className="button bright" onClick={buttonClickHandler('+')}>+</button>
+                <button className="button" onClick={buttonClickHandler('0')}>0</button>
+                <button className="button bright small-font" onClick={buttonClickHandler('.')}>.</button>
+                <button className="button bright small-font" onClick={buttonClickHandler('^')}>EXP</button>
                 <button className="button evaluate" disabled={!isValid} onClick={handleOnEvaluate}>=</button>
             </div>
 
