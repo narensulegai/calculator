@@ -98,7 +98,7 @@ body {
 
 .notes {
     display: block;
-    width: 600px;
+    max-width: 600px;
 }
 
 .mt-small {
